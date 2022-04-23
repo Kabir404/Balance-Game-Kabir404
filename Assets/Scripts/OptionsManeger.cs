@@ -43,17 +43,19 @@ public class OptionsManeger : MonoBehaviour
     {
         Resolution resolution = resolutions[ResolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        
         screenWidth = resolution.width;
         screenHeight = resolution.height;
+
         PlayerPrefs.SetInt("screenWidth", screenWidth);
         PlayerPrefs.SetInt("screenHeight", screenHeight);
+        
         PlayerPrefs.Save();
     }
 
-    void Start()
+    void IndexResolutions()
     {
         int currentResolutionIndex = 0;
-
 
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -74,5 +76,10 @@ public class OptionsManeger : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
         
+    }
+
+    void Start()
+    {
+
     }
 }

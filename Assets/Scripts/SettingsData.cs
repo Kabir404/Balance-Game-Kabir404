@@ -13,36 +13,40 @@ public class SettingsData : MonoBehaviour
 
     public Dropdown resolutionDropdown;
     public Dropdown graphicsDropdown;
+    
     public Slider volumeSlider;
+    
     public Toggle fullscreenToggle;
 
 
     private bool isfullscreen;
 
     void Start()
-
-
     {
         if (!PlayerPrefs.HasKey("screenHeight"))
         {
             PlayerPrefs.SetInt("screenHeight", Screen.height);
             PlayerPrefs.Save();
         }
+
         if(!PlayerPrefs.HasKey("screenWidth"))
         {
             PlayerPrefs.SetInt("screenWidth", Screen.width);
             PlayerPrefs.Save();
         }
+        
         if (!PlayerPrefs.HasKey("volume"))
         {
             mainMixer.SetFloat("Volume", 0);
             PlayerPrefs.Save();
         }
+        
         if (!PlayerPrefs.HasKey("quality"))
         {
             PlayerPrefs.SetInt("quality", 0);
             PlayerPrefs.Save();
         }
+        
         settingsPanel.gameObject.SetActive(true);
 
         isfullscreen = ( PlayerPrefs.GetInt("isfullscreen") != 0 );
